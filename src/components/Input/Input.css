@@ -1,0 +1,23 @@
+.input {
+  border-radius: 3px;
+  width: 400px;
+  border: 1px solid black;
+  border-color: inherit;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.small {
+  height: 25px;
+  font-size: 0.85rem;
+}
+
+.medium {
+  height: 35px;
+  font-size: 1rem;
+}
+
+.large {
+  height: 50px;
+  font-size: 1.15rem;
+}

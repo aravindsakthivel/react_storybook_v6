@@ -1,6 +1,10 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { addDecorator } from "@storybook/react";
+import { addDecorator, addParameters } from "@storybook/react";
 import { extendTheme } from "@chakra-ui/react";
+import { withConsole } from "@storybook/addon-console";
+import { withKnobs } from "@storybook/addon-knobs";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { withA11y } from "@storybook/addon-a11y";
 // 2. Extend the theme to include custom colors, fonts, etc
 const colors = {
   brand: {
@@ -27,6 +31,16 @@ export const parameters = {
   },
 };
 
-export const decorators = [
-  (Story) => <ChakraProvider theme={theme}>{Story()}</ChakraProvider>,
-];
+addDecorator((story) => <ChakraProvider>{story()}</ChakraProvider>);
+
+addDecorator((storyFn, context) => withConsole()(storyFn)(context));
+addDecorator(withKnobs);
+
+addParameters({
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
+  a11y: {
+    a11ys: withA11y
+  }
+});

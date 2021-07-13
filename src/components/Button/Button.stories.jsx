@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Center from "../Center/Center";
 import { action, actions } from "@storybook/addon-actions";
+import { text, boolean } from "@storybook/addon-knobs";
 
 export default {
   title: "form/control/Button",
@@ -20,7 +21,11 @@ export const Secondary = () => (
     Secondary
   </Button>
 );
-export const Success = () => <Button variant="success">Success</Button>;
+export const Success = () => (
+  <Button variant="success" onClick={() => console.log("clicked")}>
+    Success
+  </Button>
+);
 export const Danger = () => <Button variant="danger">Danger</Button>;
 
 const Template = (args) => <Button {...args} />;
@@ -42,3 +47,9 @@ SecondaryA.args = {
   variant: "secondary",
   children: "Secondary Args",
 };
+
+export const knobs = () => (
+  <Button disabled={boolean("Disabled", false)}>
+    {text("Label", "Button Label")}
+  </Button>
+);
